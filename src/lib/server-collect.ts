@@ -3,7 +3,10 @@
  * Collectors run on the server and survive page refresh / navigation.
  */
 
-import { buildChzzkApiCookieHeader, isApplyCookiesEnabled } from "@/lib/chzzk-cookies"
+import {
+  buildChzzkApiCookieHeader,
+  isApplyCookiesEnabled,
+} from "@/lib/chzzk-cookies"
 
 export const BACKGROUND_COLLECTOR_STORAGE_KEY = "chzzk-bg-collector"
 

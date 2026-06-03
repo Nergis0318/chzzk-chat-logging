@@ -25,15 +25,8 @@ export function parseNetscapeCookies(text: string): NetscapeCookie[] {
     if (isCommentOrBlank(raw)) continue
     const parts = raw.split("\t")
     if (parts.length < 7) continue
-    const [
-      domain,
-      subdomains,
-      path,
-      secure,
-      expiresRaw,
-      name,
-      ...valueParts
-    ] = parts
+    const [domain, subdomains, path, secure, expiresRaw, name, ...valueParts] =
+      parts
     const value = valueParts.join("\t")
     if (!domain || !name) continue
     const expires = Number.parseInt(expiresRaw, 10)
@@ -63,7 +56,9 @@ function domainMatches(cookie: NetscapeCookie, host: string): boolean {
 function pathMatches(cookie: NetscapeCookie, requestPath: string): boolean {
   const p = cookie.path || "/"
   if (p === "/") return true
-  return requestPath === p || requestPath.startsWith(p.endsWith("/") ? p : p + "/")
+  return (
+    requestPath === p || requestPath.startsWith(p.endsWith("/") ? p : p + "/")
+  )
 }
 
 function isExpired(cookie: NetscapeCookie, nowSec: number): boolean {

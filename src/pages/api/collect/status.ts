@@ -20,10 +20,7 @@ export const GET: APIRoute = async ({ url }) => {
     const info = findActiveCollectorByChannel(channelId)
     return json({ collector: info, baseDir }, 200)
   }
-  return json(
-    { collectors: listCollectors(), baseDir: getLogBaseDir() },
-    200
-  )
+  return json({ collectors: listCollectors(), baseDir: getLogBaseDir() }, 200)
 }
 
 function json(payload: unknown, status: number): Response {

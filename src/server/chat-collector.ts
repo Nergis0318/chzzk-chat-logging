@@ -124,9 +124,11 @@ async function flushLines(state: CollectorState): Promise<void> {
 }
 
 function scheduleFlush(state: CollectorState): void {
-  state.flushChain = state.flushChain.then(() => flushLines(state)).catch(() => {
-    /* errors handled in flushLines */
-  })
+  state.flushChain = state.flushChain
+    .then(() => flushLines(state))
+    .catch(() => {
+      /* errors handled in flushLines */
+    })
 }
 
 function setCollectorStatus(
@@ -254,10 +256,7 @@ export function findActiveCollectorByChannel(
 ): CollectorInfo | null {
   const trimmed = channelId.trim()
   for (const state of collectors.values()) {
-    if (
-      state.info.channelId === trimmed &&
-      state.info.status !== "stopped"
-    ) {
+    if (state.info.channelId === trimmed && state.info.status !== "stopped") {
       syncSessionInfo(state)
       return { ...state.info }
     }

@@ -88,8 +88,7 @@ export async function fetchLiveContext(
       chatChannelId,
     openLive,
     channelName: channel?.channelName ?? live?.channel?.channelName,
-    channelImageUrl:
-      channel?.channelImageUrl ?? live?.channel?.channelImageUrl,
+    channelImageUrl: channel?.channelImageUrl ?? live?.channel?.channelImageUrl,
     verifiedMark: channel?.verifiedMark ?? live?.channel?.verifiedMark,
     followerCount: channel?.followerCount,
     channelDescription: channel?.channelDescription,

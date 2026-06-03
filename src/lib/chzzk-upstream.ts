@@ -32,9 +32,11 @@ export async function fetchChzzkUpstreamFromRequest(
   return fetchChzzkUpstream(url, { cookie: cookieHeaderFromRequest(request) })
 }
 
-export function chzzkProxyJsonResponse(
-  upstream: { ok: boolean; status: number; body: string }
-): Response {
+export function chzzkProxyJsonResponse(upstream: {
+  ok: boolean
+  status: number
+  body: string
+}): Response {
   if (!upstream.ok) {
     return new Response(
       JSON.stringify({
@@ -50,10 +52,13 @@ export function chzzkProxyJsonResponse(
   try {
     JSON.parse(upstream.body)
   } catch {
-    return new Response(JSON.stringify({ error: "invalid upstream response" }), {
-      status: 502,
-      headers: { "content-type": "application/json" },
-    })
+    return new Response(
+      JSON.stringify({ error: "invalid upstream response" }),
+      {
+        status: 502,
+        headers: { "content-type": "application/json" },
+      }
+    )
   }
   return new Response(upstream.body, {
     status: 200,

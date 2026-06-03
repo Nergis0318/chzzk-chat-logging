@@ -48,7 +48,9 @@ export function setApplyCookiesEnabled(enabled: boolean): void {
 }
 
 /** Cookie header for CHZZK API upstream (live-status, detail, channel). */
-export function buildChzzkApiCookieHeader(netscapeText?: string): string | undefined {
+export function buildChzzkApiCookieHeader(
+  netscapeText?: string
+): string | undefined {
   const text = netscapeText ?? readNetscapeCookieText()
   if (!text.trim()) return undefined
   return buildCookieHeaderFromText(text, `${CHZZK_API_ORIGIN}/`)

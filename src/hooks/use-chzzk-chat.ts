@@ -620,7 +620,9 @@ export function useChzzkChat(
     const initialChannelId = options.channelId
     if (!initialChannelId || isViewStoppedInStorage()) return
     try {
-      if (sessionStorage.getItem(VIEW_AUTOSTART_STORAGE_KEY) === initialChannelId) {
+      if (
+        sessionStorage.getItem(VIEW_AUTOSTART_STORAGE_KEY) === initialChannelId
+      ) {
         return
       }
       sessionStorage.setItem(VIEW_AUTOSTART_STORAGE_KEY, initialChannelId)

@@ -86,7 +86,11 @@ export function handleChzzkWsControl(
     return "pong"
   }
   if (frame.cmd === CHZZK_CMD_PONG) return "pong"
-  if (frame.cmd === CHZZK_CMD_AUTH_SUCCESS && frame.bdy && typeof frame.bdy === "object") {
+  if (
+    frame.cmd === CHZZK_CMD_AUTH_SUCCESS &&
+    frame.bdy &&
+    typeof frame.bdy === "object"
+  ) {
     const sid = (frame.bdy as { sid?: string }).sid
     if (typeof sid === "string" && sid.length > 0) onAuth?.(sid)
     return "auth"
