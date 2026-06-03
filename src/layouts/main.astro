@@ -1,0 +1,22 @@
+---
+import "@/styles/global.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/theme-toggle"
+---
+
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>CHZZK 채팅 백업기</title>
+  </head>
+  <body class="bg-background text-foreground antialiased">
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <header class="flex justify-end p-4">
+        <ThemeToggle client:only="react" />
+      </header>
+      <slot />
+    </ThemeProvider>
+  </body>
+</html>

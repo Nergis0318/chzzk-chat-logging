@@ -1,0 +1,9 @@
+---
+export const prerender = true
+import Layout from "@/layouts/main.astro"
+import { ChzzkViewer } from "@/components/chzzk-viewer"
+---
+
+<Layout>
+  <ChzzkViewer client:only="react" />
+</Layout>
